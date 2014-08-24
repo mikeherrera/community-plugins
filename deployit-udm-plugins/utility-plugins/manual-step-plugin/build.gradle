@@ -5,16 +5,12 @@ repositories{
     mavenCentral()
 }
 
-jar {
-  from("./") {
-    include 'libs/**'
-  }
+jar.doFirst {
+    from configurations.releaseJars.collect { it.isDirectory() ? it : zipTree(it) }
+}
 
-  from {
-    configurations.runtime.collect {
-     it.isDirectory() ? it : zipTree(it)
-    }
-  }
+configurations {
+    releaseJars
 }
 
 dependencies{
@@ -25,4 +21,8 @@ dependencies{
     compile 'javax.mail:javax.mail-api:1.5.2'
 
     testCompile "junit:junit:4.11"
+    
+    dependencies {
+      releaseJars 'com.google.guava:guava:17.0' 
+    }    
 }
