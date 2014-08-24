@@ -5,5 +5,9 @@
     <type-modification type="udm.Environment">
         <property name="manualSteps" kind="list_of_ci" referenced-type="manualstep.ManualSteps" required="false" category="Manual Steps"/>
     </type-modification>
+    
+    <type-modification type="generic.Container">
+        <property name="manualSteps" kind="list_of_ci" referenced-type="manualstep.ManualSteps" required="false" category="Manual Steps"/>
+    </type-modification>
 
 </synthetic>
